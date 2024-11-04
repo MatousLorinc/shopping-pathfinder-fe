@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -30,6 +35,7 @@ a:hover {
   --col6: #888888;
   --col7: #c6c6c6;
   --col8: #ececec;
+  --col9: #fafafa;
   --colh2: rgb(65, 255, 48);
   --colh1: rgb(19, 225, 0);
   --contentWidth:1200px;
@@ -67,6 +73,10 @@ a:hover {
 .col8{
   color: var(--col5);
   background-color: var(--col8);
+}
+.col9{
+  color: var(--col5);
+  background-color: var(--col9);
 }
 .colh1{
   color: var(--colh1);

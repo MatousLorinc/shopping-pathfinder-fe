@@ -1,0 +1,8 @@
+.items-dual-box{
+  display: grid;
+  grid: 1fr 1fr / auto;
+  gap: 20px;
+  height: calc(100vh - 120px);
+  padding: 30px;
+
+}

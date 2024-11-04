@@ -1,0 +1,17 @@
+.items-list{
+  overflow-y: scroll;
+  box-shadow: 0 0 30px 10px #00000073;
+  display: grid;
+  grid: 50px / auto;
+}
+.items-list-title{
+  margin: 0;
+  padding-left: 20px;
+  text-align: left;
+}
+.items-list-content{
+  display: grid;
+  overflow-y: scroll;
+  grid: auto / auto;
+  gap: 5px;
+}

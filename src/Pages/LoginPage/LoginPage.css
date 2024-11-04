@@ -1,13 +1,15 @@
 .login-card {
-  display: block;
+  display: grid;
   width: 80%;
   height: 300px;
   margin: calc((100vh - 340px) / 2) auto;
   padding: 20px;
   box-shadow: 0 0 30px 10px #00000073;
+  grid: auto / auto;
 }
 .login-card-icon{
   width: 64px;
+  margin: auto;
 }
 /*
 .login-card-subtitle {
