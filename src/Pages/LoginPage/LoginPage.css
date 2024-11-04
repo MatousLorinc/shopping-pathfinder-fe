@@ -4,6 +4,7 @@
   height: 300px;
   margin: calc((100vh - 340px) / 2) auto;
   padding: 20px;
+  box-shadow: 0 0 30px 10px #00000073;
 }
 .login-card-icon{
   width: 64px;

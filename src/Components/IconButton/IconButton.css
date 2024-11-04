@@ -1,0 +1,7 @@
+
+.add-item-button{
+  border: 2px solid var(--colText) !important;
+}
+.add-item-button-icon{
+  color: var(--colText) !important;
+}

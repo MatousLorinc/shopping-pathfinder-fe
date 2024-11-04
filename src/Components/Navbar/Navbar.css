@@ -1,0 +1,13 @@
+.navbar{
+  height: 60px;
+  line-height: 60px;
+  text-transform: uppercase;
+  display: grid;
+  grid: auto / auto 1fr;
+  padding-left: 20px;
+}
+.navbar-title{
+  margin: 0;
+  padding-left: 20px;
+  text-align: left;
+}
