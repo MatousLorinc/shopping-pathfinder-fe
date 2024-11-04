@@ -14,6 +14,3 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     </UserContext.Provider>
   );
 };
-
-// Export the context and provider
-export { UserContext };

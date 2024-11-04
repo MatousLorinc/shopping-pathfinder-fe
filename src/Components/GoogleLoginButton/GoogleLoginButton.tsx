@@ -22,7 +22,7 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
 
     if (token) {
       const decoded = jwtDecode<GoogleJwtPayload>(token);
-      console.log("decoded JWT", decoded);
+      //console.log("decoded JWT", decoded);
       onLoginSuccess(decoded); // Pass decoded user info to parent
     } else {
       console.log("No credential found");
@@ -30,11 +30,16 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
   };
 
   return (
-    <GoogleLogin
-      onSuccess={handleLogin}
-      onError={() => {
-        console.log("Login Failed");
-      }}
-    />
+    <div
+      className="google-sign-in-button"
+      style={{ margin: "auto", maxWidth: "300px" }}
+    >
+      <GoogleLogin
+        onSuccess={handleLogin}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
+    </div>
   );
 };

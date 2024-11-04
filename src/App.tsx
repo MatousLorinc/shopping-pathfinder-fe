@@ -4,16 +4,21 @@ import "./App.css";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import EditPathItemsPage from "./Pages/EditPathItemsPage/EditPathItemsPage";
 import ActivePathPage from "./Pages/ActivePathPage/ActivePathPage";
+import { useUser } from "./Context/UserContext/useUser";
+import ShoppingPathsPage from "./Pages/ShoppingPathsPage/ShoppingPathsPage";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<LoginPage />}></Route>
-      <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/edit-path" element={<EditPathItemsPage />}></Route>
-      <Route path="/active-path" element={<ActivePathPage />}></Route>
-    </Routes>
-  );
+  const { user } = useUser();
+
+  if (user)
+    return (
+      <Routes>
+        <Route path="/" element={<ShoppingPathsPage />}></Route>
+        <Route path="/edit-path" element={<EditPathItemsPage />}></Route>
+        <Route path="/active-path" element={<ActivePathPage />}></Route>
+      </Routes>
+    );
+  else return <LoginPage />;
 }
 
 export default App;

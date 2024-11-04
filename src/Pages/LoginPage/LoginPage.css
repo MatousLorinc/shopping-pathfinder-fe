@@ -1,0 +1,16 @@
+.login-card {
+  display: block;
+  width: 80%;
+  height: 300px;
+  margin: calc((100vh - 340px) / 2) auto;
+  padding: 20px;
+}
+.login-card-icon{
+  width: 64px;
+}
+/*
+.login-card-subtitle {
+}
+.login-card-text {
+}
+*/
