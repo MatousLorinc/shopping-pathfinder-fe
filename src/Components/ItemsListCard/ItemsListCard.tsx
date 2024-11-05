@@ -1,62 +1,88 @@
 import { ItemCard } from "../ItemCard/ItemCard";
-import { ItemControlType } from "../ItemCard/ItemControlType";
+import { ItemControlType } from "../ItemCard/ItemCardTypes";
 import "./ItemsListCard.css";
-import React from "react";
+import React, { useState } from "react";
 import IconButtonMui from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import { ListItemData } from "./ItemsListCardTypes";
+import { SearchBar } from "../Searchbar/Searchbar";
+import { ModalCard } from "../Modal/ModalCard/ModalCard";
 
 type ItemsListCardProps = {
-  title: string;
-  onEdit?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  listItemData: ListItemData;
+  itemsEditable: boolean;
+  itemsControlType: ItemControlType;
+  onListEdit?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onListAdd?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const ItemsListCard: React.FC<ItemsListCardProps> = ({
-  title,
-  onEdit,
+  onListEdit,
+  onListAdd,
+  listItemData,
+  itemsEditable,
+  itemsControlType,
 }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const [addItemModalOpen, setAddItemModalOpen] = React.useState(false);
+  const toggleAddItemModalModal = () => setAddItemModalOpen(!addItemModalOpen);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query.toLowerCase());
+  };
+
+  const filteredItems = listItemData.todoItems.filter((todoItem) =>
+    todoItem.title.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <div className="items-list col8">
-      <div>
-        <h3 className="items-list-title">{title}</h3>
-        {onEdit ? (
+      <div className="items-list-header col7">
+        <h3 className="items-list-title">{listItemData.listTitle}</h3>
+        {onListEdit ? (
           <IconButtonMui
-            onClick={onEdit}
-            className="item-card-add-button"
+            onClick={onListEdit}
+            className="items-list-button"
             aria-label="icon button"
           >
             <EditIcon />
           </IconButtonMui>
+        ) : onListAdd ? (
+          <>
+            <IconButtonMui
+              onClick={toggleAddItemModalModal}
+              className="items-list-button"
+              aria-label="icon button"
+            >
+              <AddIcon />
+            </IconButtonMui>
+            <ModalCard
+              open={addItemModalOpen}
+              handleOpen={toggleAddItemModalModal}
+              title="ADD NEW ITEM"
+            >
+              <div>aaaa</div>
+            </ModalCard>
+          </>
         ) : (
           ""
         )}
-
-        <div>searchbar</div>
+        <div className="items-list-searchbar">
+          <SearchBar onSearch={handleSearch} />
+        </div>
       </div>
       <div className="items-list-content">
-        <ItemCard title="Banana1" category="fruit"></ItemCard>
-        <ItemCard
-          title="Banana2"
-          category="fruit"
-          editable={true}
-          controlType={ItemControlType.AddItem}
-        ></ItemCard>
-        <ItemCard
-          title="Bananaasa"
-          category="fruit"
-          editable={true}
-          controlType={ItemControlType.Chekbox}
-        ></ItemCard>
-        <ItemCard
-          title="Bananaasasas"
-          category="fruit"
-          editable={true}
-          controlType={ItemControlType.None}
-        ></ItemCard>
-        <ItemCard title="Banana5" category="fruit"></ItemCard>
-        <ItemCard title="Banana6" category="fruit"></ItemCard>
-        <ItemCard title="Banana7" category="fruit"></ItemCard>
-        <ItemCard title="Banana8" category="fruit"></ItemCard>
-        <ItemCard title="Banana9" category="fruit"></ItemCard>
+        {filteredItems.map((todoItem) => (
+          <ItemCard
+            key={todoItem.itemId}
+            title={todoItem.title}
+            category={todoItem.category}
+            editable={itemsEditable}
+            controlType={itemsControlType}
+          />
+        ))}
       </div>
     </div>
   );

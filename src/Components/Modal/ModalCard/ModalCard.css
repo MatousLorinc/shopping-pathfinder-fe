@@ -1,0 +1,14 @@
+.modal-card{
+  color: #3f3f3f;
+}
+.modal-card-content{
+  display: grid;
+  grid: auto / auto;
+}
+.modal-card-header{
+  display: grid;
+  grid: auto / auto 40px ;
+}
+.modal-card-title{
+  line-height: 40px;
+}

@@ -21,6 +21,7 @@ export const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
     const token = credentialResponse.credential;
 
     if (token) {
+      console.log("google token", token);
       const decoded = jwtDecode<GoogleJwtPayload>(token);
       //console.log("decoded JWT", decoded);
       onLoginSuccess(decoded); // Pass decoded user info to parent
